@@ -38,7 +38,7 @@
   border: 2px solid black;
   border-radius: 0.8rem;
   width: 100%;
-  max-width: 20rem;
+  max-width: 15rem;
   align-self: center;
   justify-self: center;
 }
@@ -49,7 +49,9 @@
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1.5fr 4fr 1fr;
   width: 100%;
-  max-width: 20rem;
+  height: auto;
+  max-width: 15rem;
+  max-height: 20rem;
   aspect-ratio: 3 / 4;
   background-image: url('https://firebasestorage.googleapis.com/v0/b/catsdogsfrogs-b754f.appspot.com/o/cats_dogs_frogs_v01.png?alt=media&token=2b1284ed-3745-415e-95cb-1a56e7f0b6d1');
   background-size: cover;
