@@ -28,21 +28,22 @@ const Card = ({card}) => {
     <section className={styles.cardBorderWrapper}>
       <div className={styles.cardWrapper}>
         <div className={styles.cardImageWrapper}>
-          <Image className={styles.cardImage} src={card.image} alt='card image art' width={200} height={150} layout='responsive' />
+          <Image className={styles.cardImage} src={card.image} alt='card image art' width={300} height={150} layout='responsive' />
         </div>
-        <div>
-          <p>{card.type}</p>
-        </div>
-        <div>
+        <div className={styles.cardInfoWrapper}>
           <p>{card.name}</p>
-        </div>
-        <div>
+          {card.abilities.map((uuid, key) => (<Ability key={key} uuid={uuid}/>))}
           <p>{card.flavor}</p>
         </div>
-        <div>
-          <p>{card.attack} / {card.defense}</p>
+        <div className={styles.cardAttack}>
+          <p>{card.attack}</p>
         </div>
-        {card.abilities.map((uuid, key) => (<Ability key={key} uuid={uuid}/>))}
+        <div className={styles.cardType}>
+          <p>{card.type}</p>
+        </div>
+        <div className={styles.cardDefense}>
+          <p>{card.defense}</p>
+        </div>
       </div>
     </section>
   </>)
