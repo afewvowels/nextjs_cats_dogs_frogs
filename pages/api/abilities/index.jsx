@@ -33,7 +33,7 @@ handler.post(async (req, res) => {
   .doc(ability.uuid)
   .set(ability)
   .then(() => res.status(201).send('successfully created new ability with uuid ' + ability.uuid))
-  .catch(err => res.status(201).send('error creating ability with uuid ' + ability.uuid + ' ' + err.message))
+  .catch(err => res.status(401).send('error creating ability with uuid ' + ability.uuid + ' ' + err.message))
 })
 
 export default handler

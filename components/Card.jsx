@@ -17,7 +17,7 @@ function Ability({uuid}) {
   if (isLoading) return(<><h3>Loading ability</h3></>)
   if (isError) return(<><h3>Error fetching ability</h3></>)
   return(<>
-    <div>
+    <div className={styles.cardAbilityWrapper}>
       <p>{ability.name}</p>
     </div>
   </>)
