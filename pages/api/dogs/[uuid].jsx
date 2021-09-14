@@ -59,4 +59,7 @@ handler.delete(async (req, res) => {
     .catch((err) => res.status(500).send(`error getting dog with uuid ${uuid} ${err.message}`))
 })
 
+
+
+
 export default handler
