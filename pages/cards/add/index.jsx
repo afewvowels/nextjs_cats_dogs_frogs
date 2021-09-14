@@ -26,7 +26,7 @@ const Add = ({abilities}) => {
         })
       })
     }
-  })
+  }, [abilities, card_abilities])
 
   const addAbilitySelectRef = useCallback((node) => {
     if (node != null && abilities != null) {
@@ -36,7 +36,7 @@ const Add = ({abilities}) => {
         node.insertAdjacentHTML('beforeend', `<option value="${ability.uuid}">${ability.name}</option>`)
       })
     }
-  })
+  }, [abilities])
 
   const addNewAbility = () => {
     set_card_abilities(card_abilities => [...card_abilities, new_ability_uuid])
@@ -44,9 +44,9 @@ const Add = ({abilities}) => {
   }
 
   const handleCreate = async () => {
-    let newUuid = uuidv4()
+    const newUuid = uuidv4()
 
-    let card = {
+    const card = {
       uuid: newUuid,
       name: name,
       flavor: flavor,
@@ -57,20 +57,7 @@ const Add = ({abilities}) => {
       abilities: card_abilities
     }
 
-    let apiUrl
-
-    if (catdogfrog == 'cat') {
-      apiUrl = `/api/cats`
-    } else if (catdogfrog == 'dog') {
-      apiUrl = `/api/dogs`
-    } else if (catdogfrog == 'frog') {
-      apiUrl = `/api/frogs`
-    } else {
-      set_error_msg('Invalid cat/dog/frog card type selected')
-      return
-    }
-
-    const cardRes = await fetch(apiUrl, {
+    const cardRes = await fetch(`/api/${catdogfrog}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(card)
@@ -93,9 +80,9 @@ const Add = ({abilities}) => {
         <label>Cat, Dog or Frog</label>
         <select value={catdogfrog} onChange={(e) => set_catdogfrog(e.target.value)}>
           <option value="-1">Select a card type</option>
-          <option value="cat">Cat</option>
-          <option value="dog">Dog</option>
-          <option value="frog">Frog</option>
+          <option value="cats">Cat</option>
+          <option value="dogs">Dog</option>
+          <option value="frogs">Frog</option>
         </select>
       </div>
       <div>

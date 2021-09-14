@@ -34,7 +34,7 @@ handler.post(async (req, res) => {
     .collection('cats')
     .doc(cat.uuid)
     .set(cat)
-    .then(() => res.status(201).send('successfully created new cat card with uuid ' +  req.body.uuid)
+    .then(() => res.status(201).send('successfully created new cat card with uuid ' +  cat.uuid)
     .catch(err => res.status(401).send(`error creating new cat card ${err.message}`)))
 })
 
