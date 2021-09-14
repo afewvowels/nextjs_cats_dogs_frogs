@@ -13,11 +13,11 @@ handler.get(async (req, res) => {
     .where('uuid', '==', uuid)
     .get()
     .then(frogs => {
-      let frogsArr = []
+      let frogData
       frogs.forEach(frog => {
-        frogsArr.push(frog.data())
+        frogData = frog.data()
       })
-      res.status(201).json(frogsArr[0])
+      res.status(201).json(frogData)
     })
     .catch(err => {
       res.status(401).send(`error getting frog with ${uuid} ${err.message}`)

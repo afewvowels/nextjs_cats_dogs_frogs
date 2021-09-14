@@ -13,11 +13,11 @@ handler.get(async (req, res) => {
     .where('uuid', '==', uuid)
     .get()
     .then(abilities => {
-      let abilitiesArr = []
+      let abilitiesData
       abilities.forEach(ability => {
-        abilitiesArr.push(ability.data())
+        abilitiesData = ability.data()
       })
-      res.status(201).json(abilitiesArr[0])
+      res.status(201).json(abilitiesData)
     })
     .catch(err => {
       res.status(401).send(`error getting ability with ${uuid} ${err.message}`)

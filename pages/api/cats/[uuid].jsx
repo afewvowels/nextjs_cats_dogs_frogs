@@ -13,11 +13,11 @@ handler.get(async (req, res) => {
     .where('uuid', '==', uuid)
     .get()
     .then((cats) => {
-      let catArr = []
+      let catData
       cats.forEach(cat => {
-        catArr.push(cat.data())
+        catData = cat.data()
       })
-      res.status(201).json(catArr)
+      res.status(201).json(catData)
     })
     .catch((err) => res.status(500).send(`error getting cat with uuid ${uuid} ${err.message}`))
 })
